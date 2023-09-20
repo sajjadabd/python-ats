@@ -86,8 +86,20 @@ def browse_files():
     
 
     # Construct file paths for PDF and keywords text file in the current directory
-    pdf_file_path = os.path.join(find_pdf_file())
-    keywords_file_path = os.path.join(find_txt_file())
+    try :
+        pdf_file_path = os.path.join(find_pdf_file())
+    except : 
+        print("no pdf file found!")
+        input()
+        exit()
+        
+        
+    try :
+        keywords_file_path = os.path.join(find_txt_file())
+    except :
+        print("no keywords.txt file found!")
+        input()
+        exit()
 
     # Check if the files exist in the current directory
     if os.path.isfile(pdf_file_path) and os.path.isfile(keywords_file_path):
